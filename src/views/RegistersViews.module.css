@@ -1,0 +1,16 @@
+.form {
+	/* display: flex;
+	flex-direction: column; */
+	width: 320px;
+}
+.label {
+	display: flex;
+	flex-direction: column;
+}
+.input {
+	border-radius: 4px;
+}
+
+.label:not(:last-child) {
+	margin-bottom: 10px;
+}
