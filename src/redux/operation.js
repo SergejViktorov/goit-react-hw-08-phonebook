@@ -11,12 +11,12 @@ import {
 	deleteContactsError,
 } from './actions'
 
-axios.defaults.baseURL = 'http://localhost:7777/'
+// axios.defaults.baseURL = 'http://localhost:7777/'
 
 const fetchContacts = () => async (dispatch) => {
 	dispatch(fetchPhoneBookRequest())
 	try {
-		const { data } = await axios.get('contacts')
+		const { data } = await axios.get('/contacts')
 		dispatch(fetchPhoneBookSuccess(data))
 	} catch (error) {
 		dispatch(fetchPhoneBookError())
