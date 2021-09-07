@@ -4,8 +4,8 @@ import { authSelectors } from '../redux/auth'
 // import authSlice from '../redux/auth/auth-slice'
 
 export default function PrivateRoute({
-	component: Component,
-	redirectTo,
+	// component: Component,
+	redirectTo = '/',
 	children,
 	...routeProps
 }) {
