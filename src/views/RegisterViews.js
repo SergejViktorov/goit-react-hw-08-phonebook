@@ -2,6 +2,8 @@ import s from './RegistersViews.module.css'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { authOperations } from '../redux/auth'
+import { Button, Form } from 'react-bootstrap'
+import { toast } from 'react-toastify'
 
 function RegisterViews() {
 	const dispatch = useDispatch()
@@ -9,7 +11,7 @@ function RegisterViews() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	const handleChange = ({ target: { name, value } }) => {
+	const handlerChange = ({ target: { name, value } }) => {
 		switch (name) {
 			case 'name':
 				return setName(value)
@@ -24,20 +26,64 @@ function RegisterViews() {
 				return
 		}
 	}
-	console.log(name)
 
-	const handleSubmit = (e) => {
+	const handlerSubmit = (e) => {
 		e.preventDefault()
-		dispatch(authOperations.register({ name, email, password }))
+		name.length === 0 || email.length === 0 || password.length === 0
+			? toast.error('Заполните все поля', {
+					theme: 'colored',
+			  })
+			: dispatch(authOperations.register({ name, email, password }))
 		setName('')
 		setEmail('')
 		setPassword('')
 	}
 
 	return (
-		<div className={s.container}>
-			<h1> Страница регистрации</h1>
-			<form onSubmit={handleSubmit} className={s.form}>
+		<div className={s.register}>
+			<h1 className={s.title}> Registration</h1>
+			<Form onSubmit={handlerSubmit}>
+				<Form.Group className="mb-2" controlId="formBasicPassword">
+					<Form.Label>Name</Form.Label>
+					<Form.Control
+						type="text"
+						name="name"
+						value={name}
+						placeholder="Enter name"
+						onChange={handlerChange}
+					/>
+				</Form.Group>
+
+				<Form.Group className="mb-2" controlId="formBasicEmail">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control
+						type="email"
+						placeholder="Enter email"
+						name="email"
+						value={email}
+						onChange={handlerChange}
+					/>
+					<Form.Text className="text-muted">
+						We'll never share your email with anyone else.
+					</Form.Text>
+				</Form.Group>
+
+				<Form.Group className="mb-3" controlId="formBasicPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control
+						type="password"
+						name="password"
+						value={password}
+						placeholder="Password"
+						onChange={handlerChange}
+					/>
+				</Form.Group>
+
+				<Button variant="primary" type="submit">
+					Registration
+				</Button>
+			</Form>
+			{/* <form onSubmit={handleSubmit} className={s.form}>
 				<label className={s.label}>
 					Имя
 					<input
@@ -55,7 +101,7 @@ function RegisterViews() {
 						type="email"
 						name="email"
 						value={email}
-						placeholder="mail"
+						placeholder="email"
 						onChange={handleChange}
 						className={s.input}
 					></input>
@@ -71,10 +117,10 @@ function RegisterViews() {
 						className={s.input}
 					></input>
 				</label>
-				<button type="submit">
-					<span>Зарегистрироваться</span>
-				</button>
-			</form>
+				<Button variant="primary" type="submit">
+					<span>Registration</span>
+				</Button>
+			</form> */}
 		</div>
 	)
 }

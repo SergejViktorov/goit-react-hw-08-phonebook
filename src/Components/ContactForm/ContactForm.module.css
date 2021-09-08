@@ -13,3 +13,12 @@
 	background-color: lemonchiffon;
 	margin-top: 10px;
 }
+.contacts {
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	text-align: center;
+}
+.button {
+	text-align: center;
+}
