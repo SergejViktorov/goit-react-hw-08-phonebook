@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { contactsOperations, contactsSelectors } from '../../redux'
+import s from './ContactList.module.css'
+import { Button } from 'react-bootstrap'
 
 const ContactList = () => {
 	const { isLoading, error } = useSelector((state) =>
@@ -31,11 +33,16 @@ const ContactListItem = ({ id, name, number }) => {
 	const dispatch = useDispatch()
 
 	return (
-		<li>
+		<li className={s.item}>
 			{name}:{number}
-			<button onClick={() => dispatch(contactsOperations.deleteContacts(id))}>
+			<Button
+				size="sm"
+				type="button"
+				variant="secondary"
+				onClick={() => dispatch(contactsOperations.deleteContacts(id))}
+			>
 				delete
-			</button>
+			</Button>
 		</li>
 	)
 }

@@ -83,44 +83,6 @@ function RegisterViews() {
 					Registration
 				</Button>
 			</Form>
-			{/* <form onSubmit={handleSubmit} className={s.form}>
-				<label className={s.label}>
-					Имя
-					<input
-						type="text"
-						name="name"
-						value={name}
-						placeholder="name"
-						onChange={handleChange}
-						className={s.input}
-					></input>
-				</label>
-				<label className={s.label}>
-					Почта
-					<input
-						type="email"
-						name="email"
-						value={email}
-						placeholder="email"
-						onChange={handleChange}
-						className={s.input}
-					></input>
-				</label>
-				<label className={s.label}>
-					Пароль
-					<input
-						type="password"
-						name="password"
-						value={password}
-						placeholder="password"
-						onChange={handleChange}
-						className={s.input}
-					></input>
-				</label>
-				<Button variant="primary" type="submit">
-					<span>Registration</span>
-				</Button>
-			</form> */}
 		</div>
 	)
 }

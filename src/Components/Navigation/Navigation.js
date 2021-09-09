@@ -7,12 +7,17 @@ function Navigation() {
 	const isLoggedIn = useSelector(authSelectors.getIsLoggedIn)
 	return (
 		<nav>
-			<NavLink to="/" className={s.link}>
+			<NavLink to="/" exact className={s.link} activeClassName={s.activelink}>
 				Главная
 			</NavLink>
 			{isLoggedIn && (
-				<NavLink to="/contacts" className={s.link}>
-					Контфкты
+				<NavLink
+					exact
+					to="/contacts"
+					className={s.link}
+					activeClassName={s.activelink}
+				>
+					Контакты
 				</NavLink>
 			)}
 		</nav>

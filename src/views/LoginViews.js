@@ -34,38 +34,6 @@ export default function LoginViews() {
 		setPassword('')
 	}
 
-	// return (
-	// 	<div className={s.login}>
-	// 		<h1>Страница логина</h1>
-	// 		<Form className={s.form} onSubmit={handlerSubmit}>
-	// 			<label className={s.label}>
-	// 				Почта
-	// 				<input
-	// 					type="email"
-	// 					name="email"
-	// 					value={email}
-	// 					placeholder="email"
-	// 					onChange={handleChange}
-	// 					className={s.input}
-	// 				></input>
-	// 			</label>
-	// 			<label className={s.label}>
-	// 				Пароль
-	// 				<input
-	// 					type="password"
-	// 					name="password"
-	// 					value={password}
-	// 					placeholder="password"
-	// 					onChange={handleChange}
-	// 					className={s.input}
-	// 				></input>
-	// 			</label>
-	// 			<Button variant="primary" width="100px" type="submit">
-	// 				Войти
-	// 			</Button>
-	// 		</Form>
-	// 	</div>
-	// )
 	return (
 		<div className={s.login}>
 			<h1>Log in</h1>

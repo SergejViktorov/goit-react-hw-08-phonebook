@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { v4 as uuid } from 'uuid'
 import { contactsOperations, contactsSelectors } from '../../redux'
 import { Button, Form } from 'react-bootstrap'
+import { toast } from 'react-toastify'
 
 import s from './ContactForm.module.css'
 
@@ -33,7 +34,10 @@ export default function ContactForm() {
 		const isExistContact = !!contacts.items.find(
 			(contact) => contact.name === name
 		)
-		isExistContact && alert('Contact is already exist')
+		isExistContact &&
+			toast.error('Contact is already exist', {
+				theme: 'colored',
+			})
 		return (
 			!isExistContact &&
 			dispatch(contactsOperations.addContacts({ id: uuid(), name, number })) &&
@@ -57,6 +61,9 @@ export default function ContactForm() {
 						name="name"
 						value={name}
 						onChange={handlerChange}
+						pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+						title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+						required
 					/>
 				</Form.Group>
 
@@ -68,47 +75,16 @@ export default function ContactForm() {
 						value={number}
 						placeholder="Enter Number"
 						onChange={handlerChange}
+						pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+						title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+						required
 					/>
 				</Form.Group>
 
-				<Button variant="primary" type="submit" classMame={s.button}>
+				<Button variant="primary" type="submit" classMame="ml-5">
 					Add contact
 				</Button>
 			</Form>
 		</div>
-		// <form onSubmit={handleSubmit} className={s.form}>
-		// 	<label>
-		// 		Name
-		// 		<input
-		// 			value={name}
-		// 			onChange={handleChange}
-		// 			type="text"
-		// 			name="name"
-		// 			placeholder="Enter name"
-		// 			pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-		// 			title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-		// 			required
-		// 			className={s.input}
-		// 		/>
-		// 	</label>
-
-		// 	<label>
-		// 		Number
-		// 		<input
-		// 			value={number}
-		// 			onChange={handleChange}
-		// 			type="tel"
-		// 			name="number"
-		// 			placeholder="Enter number"
-		// 			pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-		// 			title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-		// 			required
-		// 			className={s.input}
-		// 		/>
-		// 	</label>
-		// 	<Button variant="primary" type="submit">
-		// 		Add contact
-		// 	</Button>
-		// </form>
 	)
 }
