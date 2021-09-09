@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/views/LoginViews.module.css"],"names":[],"mappings":"AAAA,yBACC,gBAAiB,CACjB,iBAAkB,CAClB,eAAgB,CAChB,WAAY,CACZ,iBACD","file":"LoginViews.3aa90b7d.chunk.css","sourcesContent":[".login {\r\n\tmargin-left: auto;\r\n\tmargin-right: auto;\r\n\tmargin-top: 60px;\r\n\twidth: 330px;\r\n\ttext-align: center;\r\n}\r\n"]}
